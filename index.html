@@ -1,0 +1,1652 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width initial-scale=1'>
+    <title>Tomer Kotzer</title>
+    <link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext'
+        rel='stylesheet' type='text/css' />
+    <style type='text/css'>
+        html {
+            overflow-x: initial !important;
+        }
+
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --select-text-bg-color: #B5D6FC;
+            --select-text-font-color: auto;
+            --monospace: "Lucida Console", Consolas, "Courier", monospace;
+        }
+
+        html {
+            font-size: 14px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+            height: auto;
+            bottom: 0px;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            font-size: 1rem;
+            line-height: 1.42857;
+            overflow-x: hidden;
+            background: inherit;
+            tab-size: 4;
+        }
+
+        iframe {
+            margin: auto;
+        }
+
+        a.url {
+            word-break: break-all;
+        }
+
+        a:active,
+        a:hover {
+            outline: 0px;
+        }
+
+        .in-text-selection,
+        ::selection {
+            text-shadow: none;
+            background: var(--select-text-bg-color);
+            color: var(--select-text-font-color);
+        }
+
+        #write {
+            margin: 0px auto;
+            height: auto;
+            width: inherit;
+            word-break: normal;
+            overflow-wrap: break-word;
+            position: relative;
+            white-space: normal;
+            overflow-x: visible;
+            padding-top: 40px;
+        }
+
+        #write.first-line-indent p {
+            text-indent: 2em;
+        }
+
+        #write.first-line-indent li p,
+        #write.first-line-indent p * {
+            text-indent: 0px;
+        }
+
+        #write.first-line-indent li {
+            margin-left: 2em;
+        }
+
+        .for-image #write {
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+
+        body.typora-export {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .typora-export .footnote-line,
+        .typora-export li,
+        .typora-export p {
+            white-space: pre-wrap;
+        }
+
+        @media screen and (max-width: 500px) {
+            body.typora-export {
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+
+            #write {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .CodeMirror-sizer {
+                margin-left: 0px !important;
+            }
+
+            .CodeMirror-gutters {
+                display: none !important;
+            }
+        }
+
+        #write li>figure:last-child {
+            margin-bottom: 0.5rem;
+        }
+
+        #write ol,
+        #write ul {
+            position: relative;
+        }
+
+        img {
+            width: 75%;
+            vertical-align: middle;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            color: inherit;
+            font: inherit;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            line-height: normal;
+            padding: 0px;
+        }
+
+        *,
+        ::after,
+        ::before {
+            box-sizing: border-box;
+        }
+
+        #write h1,
+        #write h2,
+        #write h3,
+        #write h4,
+        #write h5,
+        #write h6,
+        #write p,
+        #write pre {
+            width: inherit;
+        }
+
+        #write h1,
+        #write h2,
+        #write h3,
+        #write h4,
+        #write h5,
+        #write h6,
+        #write p {
+            position: relative;
+        }
+
+        p {
+            line-height: inherit;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            break-after: avoid-page;
+            break-inside: avoid;
+            orphans: 2;
+        }
+
+        p {
+            orphans: 4;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            font-size: 1.6rem;
+        }
+
+        h4 {
+            font-size: 1.4rem;
+        }
+
+        h5 {
+            font-size: 1.2rem;
+        }
+
+        h6 {
+            font-size: 1rem;
+        }
+
+        .md-math-block,
+        .md-rawblock,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .md-blockmeta {
+            color: rgb(204, 204, 204);
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        a {
+            cursor: pointer;
+        }
+
+        sup.md-footnote {
+            padding: 2px 4px;
+            background-color: rgba(238, 238, 238, 0.7);
+            color: rgb(85, 85, 85);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        sup.md-footnote a,
+        sup.md-footnote a:hover {
+            color: inherit;
+            text-transform: inherit;
+            text-decoration: inherit;
+        }
+
+        #write input[type="checkbox"] {
+            cursor: pointer;
+            width: inherit;
+            height: inherit;
+        }
+
+        figure {
+            overflow-x: auto;
+            margin: 1.2em 0px;
+            max-width: calc(100% + 16px);
+            padding: 0px;
+        }
+
+        figure>table {
+            margin: 0px !important;
+        }
+
+        tr {
+            break-inside: avoid;
+            break-after: auto;
+        }
+
+        thead {
+            display: table-header-group;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0px;
+            width: 100%;
+            overflow: auto;
+            break-inside: auto;
+            text-align: left;
+        }
+
+        table.md-table td {
+            min-width: 32px;
+        }
+
+        .CodeMirror-gutters {
+            border-right: 0px;
+            background-color: inherit;
+        }
+
+        .CodeMirror-linenumber {
+            user-select: none;
+        }
+
+        .CodeMirror {
+            text-align: left;
+        }
+
+        .CodeMirror-placeholder {
+            opacity: 0.3;
+        }
+
+        .CodeMirror pre {
+            padding: 0px 4px;
+        }
+
+        .CodeMirror-lines {
+            padding: 0px;
+        }
+
+        div.hr:focus {
+            cursor: none;
+        }
+
+        #write pre {
+            white-space: pre-wrap;
+        }
+
+        #write.fences-no-line-wrapping pre {
+            white-space: pre;
+        }
+
+        #write pre.ty-contain-cm {
+            white-space: normal;
+        }
+
+        .CodeMirror-gutters {
+            margin-right: 4px;
+        }
+
+        .md-fences {
+            font-size: 0.9rem;
+            display: block;
+            break-inside: avoid;
+            text-align: left;
+            overflow: visible;
+            white-space: pre;
+            background: inherit;
+            position: relative !important;
+        }
+
+        .md-diagram-panel {
+            width: 100%;
+            margin-top: 10px;
+            text-align: center;
+            padding-top: 0px;
+            padding-bottom: 8px;
+            overflow-x: auto;
+        }
+
+        #write .md-fences.mock-cm {
+            white-space: pre-wrap;
+        }
+
+        .md-fences.md-fences-with-lineno {
+            padding-left: 0px;
+        }
+
+        #write.fences-no-line-wrapping .md-fences.mock-cm {
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        .md-fences.mock-cm.md-fences-with-lineno {
+            padding-left: 8px;
+        }
+
+        .CodeMirror-line,
+        twitterwidget {
+            break-inside: avoid;
+        }
+
+        .footnotes {
+            opacity: 0.8;
+            font-size: 0.9rem;
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+
+        .footnotes+.footnotes {
+            margin-top: 0px;
+        }
+
+        .md-reset {
+            margin: 0px;
+            padding: 0px;
+            border: 0px;
+            outline: 0px;
+            vertical-align: top;
+            background: 0px 0px;
+            text-decoration: none;
+            text-shadow: none;
+            float: none;
+            position: static;
+            width: auto;
+            height: auto;
+            white-space: nowrap;
+            cursor: inherit;
+            -webkit-tap-highlight-color: transparent;
+            line-height: normal;
+            font-weight: 400;
+            text-align: left;
+            box-sizing: content-box;
+            direction: ltr;
+        }
+
+        li div {
+            padding-top: 0px;
+        }
+
+        blockquote {
+            margin: 1rem 0px;
+        }
+
+        li .mathjax-block,
+        li p {
+            margin: 0.5rem 0px;
+        }
+
+        li {
+            margin: 0px;
+            position: relative;
+        }
+
+        blockquote> :last-child {
+            margin-bottom: 0px;
+        }
+
+        blockquote> :first-child,
+        li> :first-child {
+            margin-top: 0px;
+        }
+
+        .footnotes-area {
+            color: rgb(136, 136, 136);
+            margin-top: 0.714rem;
+            padding-bottom: 0.143rem;
+            white-space: normal;
+        }
+
+        #write .footnote-line {
+            white-space: pre-wrap;
+        }
+
+        @media print {
+
+            body,
+            html {
+                border: 1px solid transparent;
+                height: 99%;
+                break-after: avoid;
+                break-before: avoid;
+            }
+
+            #write {
+                margin-top: 0px;
+                padding-top: 0px;
+                border-color: transparent !important;
+            }
+
+            .typora-export * {
+                -webkit-print-color-adjust: exact;
+            }
+
+            html.blink-to-pdf {
+                font-size: 13px;
+            }
+
+            .typora-export #write {
+                padding-left: 32px;
+                padding-right: 32px;
+                padding-bottom: 0px;
+                break-after: avoid;
+            }
+
+            .typora-export #write::after {
+                height: 0px;
+            }
+        }
+
+        .footnote-line {
+            margin-top: 0.714em;
+            font-size: 0.7em;
+        }
+
+        a img,
+        img a {
+            cursor: pointer;
+        }
+
+        pre.md-meta-block {
+            font-size: 0.8rem;
+            min-height: 0.8rem;
+            white-space: pre-wrap;
+            background: rgb(204, 204, 204);
+            display: block;
+            overflow-x: hidden;
+        }
+
+        p>.md-image:only-child:not(.md-img-error) img,
+        p>img:only-child {
+            display: block;
+            margin: auto;
+        }
+
+        p>.md-image:only-child {
+            display: inline-block;
+            width: 100%;
+        }
+
+        #write .MathJax_Display {
+            margin: 0.8em 0px 0px;
+        }
+
+        .md-math-block {
+            width: 100%;
+        }
+
+        .md-math-block:not(:empty)::after {
+            display: none;
+        }
+
+        [contenteditable="true"]:active,
+        [contenteditable="true"]:focus,
+        [contenteditable="false"]:active,
+        [contenteditable="false"]:focus {
+            outline: 0px;
+            box-shadow: none;
+        }
+
+        .md-task-list-item {
+            position: relative;
+            list-style-type: none;
+        }
+
+        .task-list-item.md-task-list-item {
+            padding-left: 0px;
+        }
+
+        .md-task-list-item>input {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            margin-left: -1.2em;
+            margin-top: calc(1em - 10px);
+            border: none;
+        }
+
+        .math {
+            font-size: 1rem;
+        }
+
+        .md-toc {
+            min-height: 3.58rem;
+            position: relative;
+            font-size: 0.9rem;
+            border-radius: 10px;
+        }
+
+        .md-toc-content {
+            position: relative;
+            margin-left: 0px;
+        }
+
+        .md-toc-content::after,
+        .md-toc::after {
+            display: none;
+        }
+
+        .md-toc-item {
+            display: block;
+            color: rgb(65, 131, 196);
+        }
+
+        .md-toc-item a {
+            text-decoration: none;
+        }
+
+        .md-toc-inner:hover {
+            text-decoration: underline;
+        }
+
+        .md-toc-inner {
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .md-toc-h1 .md-toc-inner {
+            margin-left: 0px;
+            font-weight: 700;
+        }
+
+        .md-toc-h2 .md-toc-inner {
+            margin-left: 2em;
+        }
+
+        .md-toc-h3 .md-toc-inner {
+            margin-left: 4em;
+        }
+
+        .md-toc-h4 .md-toc-inner {
+            margin-left: 6em;
+        }
+
+        .md-toc-h5 .md-toc-inner {
+            margin-left: 8em;
+        }
+
+        .md-toc-h6 .md-toc-inner {
+            margin-left: 10em;
+        }
+
+        @media screen and (max-width: 48em) {
+            .md-toc-h3 .md-toc-inner {
+                margin-left: 3.5em;
+            }
+
+            .md-toc-h4 .md-toc-inner {
+                margin-left: 5em;
+            }
+
+            .md-toc-h5 .md-toc-inner {
+                margin-left: 6.5em;
+            }
+
+            .md-toc-h6 .md-toc-inner {
+                margin-left: 8em;
+            }
+        }
+
+        a.md-toc-inner {
+            font-size: inherit;
+            font-style: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+        }
+
+        .footnote-line a:not(.reversefootnote) {
+            color: inherit;
+        }
+
+        .md-attr {
+            display: none;
+        }
+
+        .md-fn-count::after {
+            content: ".";
+        }
+
+        code,
+        pre,
+        samp,
+        tt {
+            font-family: var(--monospace);
+        }
+
+        kbd {
+            margin: 0px 0.1em;
+            padding: 0.1em 0.6em;
+            font-size: 0.8em;
+            color: rgb(36, 39, 41);
+            background: rgb(255, 255, 255);
+            border: 1px solid rgb(173, 179, 185);
+            border-radius: 3px;
+            box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset;
+            white-space: nowrap;
+            vertical-align: middle;
+        }
+
+        .md-comment {
+            color: rgb(162, 127, 3);
+            opacity: 0.8;
+            font-family: var(--monospace);
+        }
+
+        code {
+            text-align: left;
+            vertical-align: initial;
+        }
+
+        a.md-print-anchor {
+            white-space: pre !important;
+            border-width: initial !important;
+            border-style: none !important;
+            border-color: initial !important;
+            display: inline-block !important;
+            position: absolute !important;
+            width: 1px !important;
+            right: 0px !important;
+            outline: 0px !important;
+            background: 0px 0px !important;
+            text-decoration: initial !important;
+            text-shadow: initial !important;
+        }
+
+        .md-inline-math .MathJax_SVG .noError {
+            display: none !important;
+        }
+
+        .html-for-mac .inline-math-svg .MathJax_SVG {
+            vertical-align: 0.2px;
+        }
+
+        .md-math-block .MathJax_SVG_Display {
+            text-align: center;
+            margin: 0px;
+            position: relative;
+            text-indent: 0px;
+            max-width: none;
+            max-height: none;
+            min-height: 0px;
+            min-width: 100%;
+            width: auto;
+            overflow-y: hidden;
+            display: block !important;
+        }
+
+        .MathJax_SVG_Display,
+        .md-inline-math .MathJax_SVG_Display {
+            width: auto;
+            margin: inherit;
+            display: inline-block !important;
+        }
+
+        .MathJax_SVG .MJX-monospace {
+            font-family: var(--monospace);
+        }
+
+        .MathJax_SVG .MJX-sans-serif {
+            font-family: sans-serif;
+        }
+
+        .MathJax_SVG {
+            display: inline;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            zoom: 90%;
+            text-indent: 0px;
+            text-align: left;
+            text-transform: none;
+            letter-spacing: normal;
+            word-spacing: normal;
+            overflow-wrap: normal;
+            white-space: nowrap;
+            float: none;
+            direction: ltr;
+            max-width: none;
+            max-height: none;
+            min-width: 0px;
+            min-height: 0px;
+            border: 0px;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .MathJax_SVG * {
+            transition: none 0s ease 0s;
+        }
+
+        .MathJax_SVG_Display svg {
+            vertical-align: middle !important;
+            margin-bottom: 0px !important;
+            margin-top: 0px !important;
+        }
+
+        .os-windows.monocolor-emoji .md-emoji {
+            font-family: "Segoe UI Symbol", sans-serif;
+        }
+
+        .md-diagram-panel>svg {
+            max-width: 100%;
+        }
+
+        [lang="flow"] svg,
+        [lang="mermaid"] svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        [lang="mermaid"] .node text {
+            font-size: 1rem;
+        }
+
+        table tr th {
+            border-bottom: 0px;
+        }
+
+        video {
+            max-width: 100%;
+            display: block;
+            margin: 0px auto;
+        }
+
+        iframe {
+            max-width: 100%;
+            width: 100%;
+            border: none;
+        }
+
+        .highlight td,
+        .highlight tr {
+            border: 0px;
+        }
+
+        svg[id^="mermaidChart"] {
+            line-height: 1em;
+        }
+
+        mark {
+            background: rgb(255, 255, 0);
+            color: rgb(0, 0, 0);
+        }
+
+        .md-html-inline .md-plain,
+        .md-html-inline strong,
+        mark .md-inline-math,
+        mark strong {
+            color: inherit;
+        }
+
+        mark .md-meta {
+            color: rgb(0, 0, 0);
+            opacity: 0.3 !important;
+        }
+
+
+        :root {
+            --side-bar-bg-color: #fafafa;
+            --control-text-color: #777;
+        }
+
+        @include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+        html {
+            font-size: 16px;
+        }
+
+        body {
+            font-family: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: rgb(51, 51, 51);
+            line-height: 1.6;
+        }
+
+        #write {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 30px;
+            padding-bottom: 100px;
+        }
+
+        #write>ul:first-child,
+        #write>ol:first-child {
+            margin-top: 30px;
+        }
+
+        a {
+            /* color: #4183C4; */
+            /* color: rgb(201, 66, 84); */
+            color: hotpink;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            position: relative;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            line-height: 1.4;
+            cursor: text;
+        }
+
+        h1:hover a.anchor,
+        h2:hover a.anchor,
+        h3:hover a.anchor,
+        h4:hover a.anchor,
+        h5:hover a.anchor,
+        h6:hover a.anchor {
+            text-decoration: none;
+        }
+
+        h1 tt,
+        h1 code {
+            font-size: inherit;
+        }
+
+        h2 tt,
+        h2 code {
+            font-size: inherit;
+        }
+
+        h3 tt,
+        h3 code {
+            font-size: inherit;
+        }
+
+        h4 tt,
+        h4 code {
+            font-size: inherit;
+        }
+
+        h5 tt,
+        h5 code {
+            font-size: inherit;
+        }
+
+        h6 tt,
+        h6 code {
+            font-size: inherit;
+        }
+
+        h1 {
+            padding-bottom: .3em;
+            font-size: 2.25em;
+            line-height: 1.2;
+            border-bottom: 1px solid #eee;
+        }
+
+        h2 {
+            padding-bottom: .3em;
+            font-size: 1.75em;
+            line-height: 1.225;
+            border-bottom: 1px solid #eee;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            line-height: 1.43;
+        }
+
+        h4 {
+            font-size: 1.25em;
+        }
+
+        h5 {
+            font-size: 1em;
+        }
+
+        h6 {
+            font-size: 1em;
+            color: #777;
+        }
+
+        p,
+        blockquote,
+        ul,
+        ol,
+        dl,
+        table {
+            margin: 0.8em 0;
+        }
+
+        li>ol,
+        li>ul {
+            margin: 0 0;
+        }
+
+        hr {
+            height: 2px;
+            padding: 0;
+            margin: 16px 0;
+            background-color: #e7e7e7;
+            border: 0 none;
+            overflow: hidden;
+            box-sizing: content-box;
+        }
+
+        li p.first {
+            display: inline-block;
+        }
+
+        ul,
+        ol {
+            padding-left: 30px;
+        }
+
+        ul:first-child,
+        ol:first-child {
+            margin-top: 0;
+        }
+
+        ul:last-child,
+        ol:last-child {
+            margin-bottom: 0;
+        }
+
+        blockquote {
+            border-left: 4px solid #dfe2e5;
+            padding: 0 15px;
+            color: #777777;
+        }
+
+        blockquote blockquote {
+            padding-right: 0;
+        }
+
+        table {
+            padding: 0;
+            word-break: initial;
+        }
+
+        table tr {
+            border-top: 1px solid #dfe2e5;
+            margin: 0;
+            padding: 0;
+        }
+
+        table tr:nth-child(2n),
+        thead {
+            background-color: #f8f8f8;
+        }
+
+        table tr th {
+            font-weight: bold;
+            border: 1px solid #dfe2e5;
+            border-bottom: 0;
+            margin: 0;
+            padding: 6px 13px;
+        }
+
+        table tr td {
+            border: 1px solid #dfe2e5;
+            margin: 0;
+            padding: 6px 13px;
+        }
+
+        table tr th:first-child,
+        table tr td:first-child {
+            margin-top: 0;
+        }
+
+        table tr th:last-child,
+        table tr td:last-child {
+            margin-bottom: 0;
+        }
+
+        .CodeMirror-lines {
+            padding-left: 4px;
+        }
+
+        .code-tooltip {
+            box-shadow: 0 1px 1px 0 rgba(0, 28, 36, .3);
+            border-top: 1px solid #eef2f2;
+        }
+
+        .md-fences,
+        code,
+        tt {
+            border: 1px solid #e7eaed;
+            background-color: #f8f8f8;
+            border-radius: 3px;
+            padding: 0;
+            padding: 2px 4px 0px 4px;
+            font-size: 0.9em;
+        }
+
+        code {
+            background-color: #f3f4f4;
+            padding: 0 2px 0 2px;
+        }
+
+        .md-fences {
+            margin-bottom: 15px;
+            margin-top: 15px;
+            padding-top: 8px;
+            padding-bottom: 6px;
+        }
+
+
+        .md-task-list-item>input {
+            margin-left: -1.3em;
+        }
+
+        @media print {
+            html {
+                font-size: 13px;
+            }
+
+            table,
+            pre {
+                page-break-inside: avoid;
+            }
+
+            pre {
+                word-wrap: break-word;
+            }
+        }
+
+        .md-fences {
+            background-color: #f8f8f8;
+        }
+
+        #write pre.md-meta-block {
+            padding: 1rem;
+            font-size: 85%;
+            line-height: 1.45;
+            background-color: #f7f7f7;
+            border: 0;
+            border-radius: 3px;
+            color: #777777;
+            margin-top: 0 !important;
+        }
+
+        .mathjax-block>.code-tooltip {
+            bottom: .375rem;
+        }
+
+        .md-mathjax-midline {
+            background: #fafafa;
+        }
+
+        #write>h3.md-focus:before {
+            left: -1.5625rem;
+            top: .375rem;
+        }
+
+        #write>h4.md-focus:before {
+            left: -1.5625rem;
+            top: .285714286rem;
+        }
+
+        #write>h5.md-focus:before {
+            left: -1.5625rem;
+            top: .285714286rem;
+        }
+
+        #write>h6.md-focus:before {
+            left: -1.5625rem;
+            top: .285714286rem;
+        }
+
+        .md-image>.md-meta {
+            /*border: 1px solid #ddd;*/
+            border-radius: 3px;
+            padding: 2px 0px 0px 4px;
+            font-size: 0.9em;
+            color: inherit;
+        }
+
+        .md-tag {
+            color: #a7a7a7;
+            opacity: 1;
+        }
+
+        .md-toc {
+            margin-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .sidebar-tabs {
+            border-bottom: none;
+        }
+
+        #typora-quick-open {
+            border: 1px solid #ddd;
+            background-color: #f8f8f8;
+        }
+
+        #typora-quick-open-item {
+            background-color: #FAFAFA;
+            border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+            border-style: solid;
+            border-width: 1px;
+        }
+
+        /** focus mode */
+        .on-focus-mode blockquote {
+            border-left-color: rgba(85, 85, 85, 0.12);
+        }
+
+        header,
+        .context-menu,
+        .megamenu-content,
+        footer {
+            font-family: "Segoe UI", "Arial", sans-serif;
+        }
+
+        .file-node-content:hover .file-node-icon,
+        .file-node-content:hover .file-node-open-state {
+            visibility: visible;
+        }
+
+        .mac-seamless-mode #typora-sidebar {
+            background-color: #fafafa;
+            background-color: var(--side-bar-bg-color);
+        }
+
+        .md-lang {
+            color: #b4654d;
+        }
+
+        .html-for-mac .context-menu {
+            --item-hover-bg-color: #E6F0FE;
+        }
+
+        #md-notification .btn {
+            border: 0;
+        }
+
+        .dropdown-menu .divider {
+            border-color: #e5e5e5;
+        }
+
+        .ty-preferences .window-content {
+            background-color: #fafafa;
+        }
+
+        .ty-preferences .nav-group-item.active {
+            color: white;
+            background: #999;
+        }
+
+        #EDIT-title {
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 12em;
+            line-height: 0.85em;
+            border: none;
+            margin: 0px;
+            padding: 0px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #EDIT-subtitle {
+            text-align: center;
+            margin-top: 60px;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        @media screen and (max-width: 800px) {
+            #EDIT-title {
+                font-size: 4.5em;
+            }
+
+            #EDIT-subtitle {
+                text-align: center;
+                margin-top: 40px;
+                margin-bottom: -10px;
+                font-size: 1em;
+            }
+        }
+
+        #socialContainer {
+            z-index: 20;
+            position: fixed;
+            right: 8px;
+            top: 50%;
+            width: 2vw;
+            min-width: 18px;
+            transform: translateY(-50%);
+        }
+
+        #socialContainer .socialIcon {
+            user-select: none;
+            vertical-align: bottom;
+            filter: invert(1);
+            width: 100%;
+            border-radius: 50%;
+        }
+
+        #socialContainer a {
+            display: inline-block;
+            margin: 0px;
+            margin-bottom: 0.3vw;
+            border-radius: 50%;
+        }
+
+        #socialContainer a:last-child {
+            margin-bottom: 0px;
+        }
+
+        .tagsContainer {
+            width: 100%;
+            height: 35px;
+            margin-top: 20px;
+            }
+
+            .tagsContainer .projectTag {
+            height: 100%;
+            padding: 0 15px 0 15px;
+            -webkit-box-sizing: border-box;
+                    box-sizing: border-box;
+            border-radius: 3px;
+            float: left;
+            margin-right: 8px;
+            font-size: 20px;
+            color: #fff;
+            /* font-family: "Inter", "sans-serif"; */
+            line-height: 35px;
+            text-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
+            -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                    user-select: none;
+            }
+
+            .tagsContainer .tag_js {
+            background-color: #e9d345;
+            -webkit-box-shadow: 0 5px 0 #bba735;
+                    box-shadow: 0 5px 0 #bba735;
+            }
+
+            .tagsContainer .tag_js:before {
+            content: "JavaScript";
+            }
+
+            .tagsContainer .tag_phaser {
+            background-color: #8d4094;
+            -webkit-box-shadow: 0 5px 0 #743a83;
+                    box-shadow: 0 5px 0 #743a83;
+            }
+
+            .tagsContainer .tag_phaser:before {
+            content: "phaser.js";
+            }
+
+            .tagsContainer .tag_java {
+            background-color: #0f7991;
+            -webkit-box-shadow: 0 5px 0 #0e6580;
+                    box-shadow: 0 5px 0 #0e6580;
+            }
+
+            .tagsContainer .tag_java:before {
+            content: "Java";
+            }
+
+            .tagsContainer .tag_robotics {
+            background-color: #ff9933;
+            -webkit-box-shadow: 0 5px 0 #ec732d;
+                    box-shadow: 0 5px 0 #ec732d;
+            }
+
+            .tagsContainer .tag_robotics:before {
+            content: "Robotics";
+            }
+
+            .tagsContainer .tag_controlTheory {
+            background-color: #3dc949;
+            -webkit-box-shadow: 0 5px 0 #32ac56;
+                    box-shadow: 0 5px 0 #32ac56;
+            }
+
+            .tagsContainer .tag_controlTheory:before {
+            content: "Control Theory";
+            }
+
+            .tagsContainer .tag_teaching {
+            background-color: #e96dd8;
+            -webkit-box-shadow: 0 5px 0 #c85bc8;
+                    box-shadow: 0 5px 0 #c85bc8;
+            }
+
+            .tagsContainer .tag_teaching:before {
+            content: "Teaching";
+            }
+
+            .tagsContainer .tag_p5 {
+            background-color: #ED225D;
+            -webkit-box-shadow: 0 5px 0 #ce1845;
+                    box-shadow: 0 5px 0 #ce1845;
+            }
+
+            .tagsContainer .tag_p5:before {
+            content: "p5.js";
+            }
+
+            .tagsContainer .tag_html {
+            background-color: #F16529;
+            -webkit-box-shadow: 0 5px 0 #d6551e;
+                    box-shadow: 0 5px 0 #d6551e;
+            }
+
+            .tagsContainer .tag_html:before {
+            content: "HTML5";
+            }
+
+            .tagsContainer .tag_node {
+            background-color: #026E00;
+            -webkit-box-shadow: 0 5px 0 #005512;
+                    box-shadow: 0 5px 0 #005512;
+            }
+
+            .tagsContainer .tag_node:before {
+            content: "node.js";
+            }
+
+            .tagsContainer .tag_express {
+            background-color: #383838;
+            -webkit-box-shadow: 0 5px 0 #202020;
+                    box-shadow: 0 5px 0 #202020;
+            }
+
+            .tagsContainer .tag_express:before {
+            content: "express.js";
+            }
+
+            .tagsContainer .tag_socketIO {
+            background-color: #ff5151;
+            -webkit-box-shadow: 0 5px 0 #e74646;
+                    box-shadow: 0 5px 0 #e74646;
+            }
+
+            .tagsContainer .tag_socketIO:before {
+            content: "socket.io";
+            }
+
+            .tagsContainer .tag_canvas {
+            background-color: #3bb9cf;
+            -webkit-box-shadow: 0 5px 0 #359ebe;
+                    box-shadow: 0 5px 0 #359ebe;
+            }
+
+            .tagsContainer .tag_canvas:before {
+            content: "HTML5 Canvas";
+            }
+
+            .tagsContainer .tag_gameJam {
+            background-color: #96cf3b;
+            -webkit-box-shadow: 0 5px 0 #77b430;
+                    box-shadow: 0 5px 0 #77b430;
+            }
+
+            .tagsContainer .tag_gameJam:before {
+            content: "Game Jam";
+            }
+
+            .tagsContainer .tag_unity {
+            background-color: #3c5163;
+            -webkit-box-shadow: 0 5px 0 #2a2e41;
+                    box-shadow: 0 5px 0 #2a2e41;
+            }
+
+            .tagsContainer .tag_unity:before {
+            content: "Unity";
+            }
+
+            .tagsContainer .tag_cSharp {
+            background-color: #9B6FD3;
+            -webkit-box-shadow: 0 5px 0 #895ab4;
+                    box-shadow: 0 5px 0 #895ab4;
+            }
+
+            .tagsContainer .tag_cSharp:before {
+            content: "C#";
+            }
+
+            .tagsContainer .tag_mobile {
+            background-color: #77472c;
+            -webkit-box-shadow: 0 5px 0 #5c2c20;
+                    box-shadow: 0 5px 0 #5c2c20;
+            }
+
+            .tagsContainer .tag_mobile:before {
+            content: "Mobile";
+            }
+
+            .tagsContainer .tag_chromeExtension {
+            background-color: #41c080;
+            -webkit-box-shadow: 0 5px 0 #31a075;
+                    box-shadow: 0 5px 0 #31a075;
+            }
+
+            .tagsContainer .tag_chromeExtension:before {
+            content: "Chrome Extension";
+            }
+    </style>
+</head>
+
+<body class='typora-export os-windows'>
+
+    <section id="socialContainer">
+        <a href="https://github.com/tomerCool" target="_blank">
+            <img class="socialIcon" src="assets/social/github.png" />
+        </a>
+        <a href="https://codepen.io/TomerKotzer" target="_blank">
+            <img class="socialIcon" src="assets/social/codepen.png" />
+        </a>
+        <a href="https://twitter.com/TomerKotzer" target="_blank">
+            <img class="socialIcon" src="assets/social/twitter.png" />
+        </a>
+        <a href="mailto:tomer.kotzer@gmail.com" target="_blank">
+            <img class="socialIcon" src="assets/social/email.png" /></a>
+    </section>
+
+    <div id='write' class='is-node'>
+        <h2 id="EDIT-title">Tomer Kotzer.</h2>
+        <p id="EDIT-subtitle">Selected Works</p>
+        <br />
+        
+        <h2><a name="theodd1sout-tetris-edition" class="md-header-anchor"></a><span>TheOdd1sOut Tetris Edition</span>
+        </h2>
+        <p><span>A 2D vertical scroller fan game about the youtuber TheOdd1sOut, made back in 2017 when I was 13. The levels are generated semi-procedurally and get harder as you progress. Though you might see similar parts more then once, it&#39;s highly unlikely to get the same level twice. </span><em><span>(pro tip: it&#39;s more fun to play with 2 players where one is in charge of moving the player character and the other controls the mouse).</span></em></p>
+        <p><span>The game can be found </span><a href='https://tomer-cool.itch.io/theodd1sout-tetris'><span>here</span></a><span>, remember to read the tutorial first or you won&#39;t know how to play.</span></p>
+        <div class="tagsContainer">
+            <div class="projectTag tag_js"></div>
+            <div class="projectTag tag_phaser"></div>
+        </div>
+        <br />
+        <p><img src="https://lh3.googleusercontent.com/u/0/d/1unAzH87anKNoCJUkS7gtcCCUyNc8jGjp=w3840-h1947-iv1"
+                referrerpolicy="no-referrer" alt="gameplay"></p>
+        <p><img src="https://lh3.googleusercontent.com/u/0/d/1lXThu-vl-wqArzvQw40f_wifOHfabshD=w3159-h1947-iv1"
+                referrerpolicy="no-referrer" alt="square2"></p>
+        <p><img src="https://lh3.googleusercontent.com/u/0/d/1MC_6rOCzX8UnowMieIvr9ePtzT5_K4jj=w3840-h1947-iv1"
+                referrerpolicy="no-referrer" alt="menu"></p>
+        
+        <h2><a name="frc" class="md-header-anchor"></a><span>FRC</span></h2>
+        <p><span>I&#39;ve been a part of Ironi Dalet&#39;s robotics team since 10th grade, we take part in the </span><a href='https://www.firstinspires.org/robotics/frc'><span>First Robotics Competition</span></a><span>. I&#39;m a part of the Control and Programming sub-team and were in charge of writing code for the robot. Some of the cooler things we do include:</span></p>
+        <ul>
+            <li><span>Computer vision and controlling the robot using data from the camera</span></li>
+            <li><span>Making the robot move on its own move without input from the driver during the autonomous period (first 15 seconds of each game)</span></li>
+            <li><span>Teaching students who are new to the team how to program and how to write code for a robot</span></li>
+        </ul>
+        <p><span>Our code is open source and </span><a href='https://github.com/team3316'><span>available on github</span></a><span>.</span></p>
+        <p><span>Some team members, myself included, mentor students from nearby elementary schools as part of the </span><a href='https://www.firstinspires.org/robotics/flljr'><span>First Lego League Jr.</span></a><span> program. Teaching them basic engineering and programming principles using Legos and block programming.</span></p>
+        <div class="tagsContainer">
+            <div class="projectTag tag_java"></div>
+            <div class="projectTag tag_robotics"></div>
+            <div class="projectTag tag_controlTheory"></div>
+            <div class="projectTag tag_teaching"></div>
+        </div>
+        <br />
+        <p><img src="https://lh3.googleusercontent.com/u/0/d/113HI2ytHPRVWpdyNuGFWKhAhgSYmm49B=w3159-h1947-iv1"
+                referrerpolicy="no-referrer" alt="fixedAngle"></p>
+        <p><img src="https://lh3.googleusercontent.com/u/0/d/1aQhG4_Ep7ljpTqsqG8ro9hgm_1j0fruF=w3159-h1947-iv1"
+                referrerpolicy="no-referrer" alt="talking"></p>
+        
+        <h2><a name="programming-courses" class="md-header-anchor"></a><span>Programming Courses</span></h2>
+        <p><span>We have annual meetings in the robotics team to discuss our community work, we brainstorm on how it can be improved and what more can we do. In one of those meetings I suggested we teach students in our school how to program and offered to do so. I wanted us to teach programming as I knew it&#39;s useful information that can benefit anyone, especially young students. My friends loved the idea and offered to help, and so we decided to make and teach the course.</span></p>
+        <p><span>The course was aimed at students from grades 7 to 9 with no previous knowledge in programming and consisted of 5 weekly meetings, 1½ hours each. We chose to teach JavaScript and </span><a href='https://p5js.org/'><span>p5.js</span></a><span> as it&#39;s simple to understand so it&#39;ll be easy to learn without previous experience, but also useful knowledge to have if they decide to continue learning programming after the course. We also taught them some basic HTML because we wanted them to understand how the technologies that they were learning are used in the real world by experienced programmers.</span></p>
+        <p><span>The course&#39;s presentations can be found </span><a href='https://drive.google.com/drive/folders/1ZtpouLk06T1kpssJaYvkZWFYuUJ21b28'><span>here</span></a><span>.</span></p>
+        <div class="tagsContainer">
+            <div class="projectTag tag_teaching"></div>
+            <div class="projectTag tag_js"></div>
+            <div class="projectTag tag_p5"></div>
+            <div class="projectTag tag_html"></div>
+        </div>
+        <br />
+        <p><img src="https://lh3.googleusercontent.com/u/0/d/14QSWOLv3TTqc9Yp5lrese404ILR7z3PA=w3159-h1947-iv1"
+                referrerpolicy="no-referrer" alt="poster"></p>
+        <p><img src="https://lh3.googleusercontent.com/u/0/d/1uTbk8JNmmr5VeVWx4A0Qw05uo9N6TD8j=w3159-h1947-iv1"
+                referrerpolicy="no-referrer" alt="talking_1"></p>
+        
+        <h2><a name="multigravity" class="md-header-anchor"></a><span>MultiGravity</span></h2>
+        <p><span>Made when I was 13, MultiGravity is my first multiplayer game. All players connected to a joined world where they could place blocks and move around, players were able to switch their gravity upside down (as you might have guessed from the name), and I&#39;ve also implemented a small pixel art editor so players could draw their own avatars.</span></p>
+        <p><span>As I was already familiar with JavaScript I decided to use Node.js for the back-end, I also used express for serving static files, and the WebSocket API using socket.io for transmitting data back and forth. The game&#39;s logic was handled on the server and the client only needed to do the rendering and to send and receive input and rendering instructions.</span></p>
+        <p><span>The back-end&#39;s design was quite flawed, I managed to drastically slow it down by duplicating its tab over and over, connecting too many clients at the same time. I was also able for example to change my avatar image more then once by sending a request to the server with Base64 data of an image using the console, which shouldn&#39;t be possible.</span></p>
+        <p><span>Making this game was challenging and fun and I&#39;m definitely planning on making more multiplayer games in the future.</span></p>
+        <div class="tagsContainer">
+            <div class="projectTag tag_js"></div>
+            <div class="projectTag tag_node"></div>
+            <div class="projectTag tag_express"></div>
+            <div class="projectTag tag_socketIO"></div>
+            <div class="projectTag tag_canvas"></div>
+        </div>
+        <br />
+        <p><img src="https://lh3.googleusercontent.com/u/0/d/1KPL3RmwefqqGFj9HI11Lb8kH1dTPSvN5=w3159-h1947-iv1"
+                referrerpolicy="no-referrer" alt="withText"></p>
+        <p><img src="https://lh3.googleusercontent.com/u/0/d/1Oj19pqubgbC9Xqz6a3ijZfN9Tr7q8INQ=w3159-h1947-iv1"
+                referrerpolicy="no-referrer" alt="placingBlocks"></p>
+        
+        <h2><a name="ludum-dare" class="md-header-anchor"></a><span>Ludum Dare</span></h2>
+        <p><a href='https://ldjam.com/events/ludum-dare/rules'><span>Ludum Dare</span></a><span> is an online competition where you have 48 hours to complete a game based around a certain theme. So far I participated in 4 Ludum Dares: [TODO upload some of the games to itch.io]</span></p>
+        <ol start=''>
+            <li><strong><span>LD 36 ⋅ 12y/o ⋅ Old N&#39; Fashioned</span></strong><span> - a pretty hard platformer where you have to avoid lava and spikes to help a dog with a mustache build his car (yeah I know...)</span></li>
+            <li><strong><span>LD 37 ⋅ 13y/o ⋅ Text Me Later</span></strong><span> - you play as a text message and have to get to your destination while avoiding birds, the background music is an 8 second recoding of 13 year old me saying &quot;birds, birds, birds&quot; that plays indefinitely</span></li>
+            <li><strong><span>LD 38 ⋅ 13y/o ⋅ The Perfect Sandwich</span></strong><span> - a platformer where you have to gather ingredients for a perfect sandwich. The game includes growing bread, preforming a lettuce-growing rain dance, and purchasing cheese at the grocery store</span></li>
+            <li><strong><span>LD 40 ⋅ 14y/o ⋅ Glitched</span></strong><span> - a game where more annoying glitches get added the more you play, in the final level the texture is all messed up and you randomly teleport to the left sometimes, great game</span></li>
+        </ol>
+        <div class="tagsContainer">
+            <div class="projectTag tag_js"></div>
+            <div class="projectTag tag_canvas"></div>
+            <div class="projectTag tag_phaser"></div>
+            <div class="projectTag tag_gameJam"></div>
+        </div>
+        <br />
+        <p><img src="https://lh3.googleusercontent.com/u/0/d/1OlsxRzQKAdWb4_viofjgByXXtwxtbDvY=w3159-h1947-iv1"
+                referrerpolicy="no-referrer" alt="LD40_gamplay"></p>
+        <p><img src="https://lh3.googleusercontent.com/u/0/d/1FxjLr0EUic6218O31XZKp2Uri5lkG2eM=w3159-h1947-iv1"
+                referrerpolicy="no-referrer" alt="LD37_gamplay"></p>
+        
+        <h2><a name="get-fat-tapper" class="md-header-anchor"></a><span>Get Fat Tapper</span></h2>
+        <p><span>Get Fat Tapper is the first time I experimented with mobile games, I chose to work with </span><a href='https://unity.com/'><span>Unity</span></a><span>, mainly because it&#39;s a popular game engine, meaning plenty of tutorials are available online, but also because it has cross platform support so I could port my game to many platforms easily.</span></p>
+        <p><span>I thought a good way to learn unity and mobile game development in general would be to develop one of those simple yet addictive games where you click forever to gain points, but instead of just clicking I wanted the player to be able to choose which dull repetitive act they&#39;d like to preform, so I implemented different input methods like shaking, dragging, swiping and more.</span></p>
+        <p><span>Overall the project achieved what I wanted which was to help me learn the basics of unity, and the game I made with unity afterwards was more complex and in my opinion, more engaging.</span></p>
+        <div class="tagsContainer">
+            <div class="projectTag tag_unity"></div>
+            <div class="projectTag tag_cSharp"></div>
+            <div class="projectTag tag_mobile"></div>
+        </div>
+        <br />
+        <p><img src="https://lh3.googleusercontent.com/u/0/d/1-LsBmbRRXkdrz7DlE27h1iLa2DXreuIZ=w3159-h1947-iv1"
+                referrerpolicy="no-referrer" alt="dragging"></p>
+        <p><img src="https://lh3.googleusercontent.com/u/0/d/1hKhy-4ErbEXlsI5HW5YseytxmVuy5uKd=w3159-h1947-iv1"
+                referrerpolicy="no-referrer" alt="shaking"></p>
+        
+        <h2><a name="adventure-all-around" class="md-header-anchor"></a><span>Adventure All Around</span></h2>
+        <p><span>Adventure all around is the second game I made with Unity, it has the player going around the galaxy, collecting cats and moving them to their designated planets while avoiding the hostile cats. I got the idea when I played &quot;Angry Birds Space&quot; as a kid and thought how cool it would be if it was possible to walk on each planet and move around freely.</span></p>
+        <p><span>I like this game, I think wandering around from planet to planet is super fun and I like the little details and polish like the dust particles when the player walks or the nice depth effect in the background. On the other hand, I could have chosen a better goal for the player then moving cats around, and some of the mechanics are buggy because I lacked the necessary knowledge to implement them back then. I might revisit this project in the future.</span></p>
+        <div class="tagsContainer">
+            <div class="projectTag tag_unity"></div>
+            <div class="projectTag tag_cSharp"></div>
+            <div class="projectTag tag_mobile"></div>
+        </div>
+        <br />
+        <p><img src="https://lh3.googleusercontent.com/u/0/d/1_s667JgH2wvLSJvyTet96HNXatc3OQzR=w3159-h1947-iv1"
+                referrerpolicy="no-referrer" alt="gravity"></p>
+        <p><img src="https://lh3.googleusercontent.com/u/0/d/1JMteO9IcJhmDMAz70IccLENf24F1pOz7=w3159-h1947-iv1"
+                referrerpolicy="no-referrer" alt="menu"></p>
+        
+        <h2><a name="site-effects" class="md-header-anchor"></a><span>Site Effects</span></h2>
+        <p><span>Site Effects is a chrome extension I wrote in 2016 when I was 13. Around that time I heard about the </span><code>filter</code><span> attribute in CSS which allows you to apply basic filters to elements in a webpage like invert, grayscale, hue-rotate and more. I thought it would be interesting to make an extension which lets you apply these effects to an entire page and so began reading on how to write a chrome extension.</span></p>
+        <p><span>Back then I was quite happy with the final product, it had 9 different filter options and I also added an option to save your filter settings to local storage. When looking back at it now I see that I should have made the option to save your changes specific to each site and not global, also the code could have been written better and more efficiently.</span></p>
+        <p><span style="text-decoration: line-through;"><span>The extension is available </span><a href='https://chrome.google.com/webstore/detail/amdlkmlajndpeebikkpnkodjiepagkef/publish-unknown?authuser=0&amp;hl=en'><span>here</span></a><span> if you want to try it out.</span></span> Google removed the it from the Chrome Web Store, it should be back up in a couple of weeks.</p>
+        <div class="tagsContainer">
+            <div class="projectTag tag_js"></div>
+            <div class="projectTag tag_chromeExtension"></div>
+        </div>
+        <br />
+        <p><img src="https://lh3.googleusercontent.com/u/0/d/1t-BUhoh_WZM1BzX83YViouXix9fbLPgn=w3159-h1947-iv1"
+                referrerpolicy="no-referrer" alt="github"></p>
+        <p><img src="https://lh3.googleusercontent.com/u/0/d/15QIwq9pFD2JhrsNLaAmmLczV_dBJKuNA=w3159-h1947-iv1"
+                referrerpolicy="no-referrer" alt="stackOverflow"></p>
+    </div>
+</body>
+
+</html>
